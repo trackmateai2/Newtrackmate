@@ -3,17 +3,9 @@ body
    background: #ffffff;
 }
 
-.top{
-    display: flex;
-    margin-left: 2%;
-}
-
-.title{
-    font-size: 20px;
-    font-family: 'Righteous', cursive;
-}
-.avatar{
-   height: 50px;
+.avatar2{
+    width: 30%;
+    margin-left: 33%;
 }
 
 
