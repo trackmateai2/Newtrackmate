@@ -1,49 +1,83 @@
 <html>
 <head>
-	<title>Account</title>
+	<title>Geo Loc</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="styles.css">
-	<script src="script.js"></script>
+	<script src="map.js"></script>
    <style>
 	   @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 	   @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
-	   @import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap');
   </style>
-   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-   integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-   crossorigin=""></script>
+	  
+     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+     
+     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+     
 </head>
 <body>
 
 
-          <image class="avatar2" src="Img/avatar2.png"></image>
+
+
+               <p id="value1" class="coord">-18.288362892962013</p>
+               <p id="value2" class="coord2">21.7888445049532</p>
+    
+     
+
+   
+
+ <div class="mapDiv" id="mapDiv">
+        <div id="demo" class="demoDiv" ></div>
+        <div id="map" class="map"></div>
+     <script type="text/javascript">
+                                                                  
+          
+            var valu1= document.getElementById("value1").innerText;
+            var valu2= document.getElementById("value2").innerText;
+          
+          
+          
+         var map = L.map('map').setView([valu1, valu2], 4);//14
+         
+         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+         maxZoom: 19,
+         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">TrackMate</a>'
+         }).addTo(map);
+        
+        
+     </script>   
+   </div>
+   
+   
+   
+   <div class="bottomNav">
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   </div>
+   
+   
+   
+   
+   
+   
+   
 
 
 
-	
-          <div class="mapDiv" id="mapDiv">
-                <div id="demo" class="demoDiv" ></div>
-                <div id="map" class="map"></div>
-             
-             <script type="text/javascript">
-                   var map = L.map('map').setView([-24.618754837055594, 26.124530124597566], 1);//14
-            
-                   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                   maxZoom: 19,
-                   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">TrackMate</a>'
-                   }).addTo(map);
-                   var marker = L.marker([-24.618754837055594, 26.124530124597566]).addTo(map);
-                   marker.bindPopup("<b><font color='#000000'> ND8 Geo Location </font> ").openPopup();
-
-
-
-                </script> 
-
-          </div>
 
 
 
@@ -53,9 +87,49 @@
 
 
 
+  <script>
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+      } else {
+        document.getElementById("location").innerHTML = "Geolocation is not supported by this browser.";
+      }
+    
+
+    function showPosition(position) {
+        
+        document.getElementById("value1").innerHTML =position.coords.latitude;
+        document.getElementById("value2").innerHTML =position.coords.longitude;
+        
+        
+         var marker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
+         marker.bindPopup("<font color=#000000><b>My Location </b> <br/> <font size=0.5px color=grey>  Accuracy 97%... ").openPopup();
+     
+        
+    }
+
+    function showError(error) {
+      switch(error.code) {
+        case error.PERMISSION_DENIED:
+          document.getElementById("location").innerHTML = "User denied the request for Geolocation.";
+          break;
+        case error.POSITION_UNAVAILABLE:
+          document.getElementById("location").innerHTML = "Location information is unavailable.";
+          break;
+        case error.TIMEOUT:
+          document.getElementById("location").innerHTML = "The request to get user location timed out.";
+          break;
+        case error.UNKNOWN_ERROR:
+          document.getElementById("location").innerHTML = "An unknown error occurred.";
+          break;
+      }
+    }
+  </script>
 
 
 
 
-  </body>
+
+
+
+ </body>
 </html>
