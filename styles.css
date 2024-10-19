@@ -26,10 +26,13 @@ body
    display: none;   
 }
 .bottomNav{
+    background-image: url('Img/2.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
     position: relative;
-    background: #ffffff;
     width: 104.8%;
-    height: 60%;
+    padding-bottom: 6%;
     z-index: 100000;
     margin-left: -2.5%;
     box-shadow: 0px 0px 0px 0px #000000;
@@ -82,7 +85,7 @@ button {
 
 .geo{
    color: #000000;
-   font-size: 12px;
+   font-size: 5px;
    font-family: "Rajdhani", sans-serif;
    font-weight: bold;
 }
