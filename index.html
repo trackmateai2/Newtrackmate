@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="styles.css">
 	<script src="map.js"></script>
+	<script src="script.js"></script>
    <style>
 	   @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 	   @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
@@ -95,6 +96,9 @@
         <p class="geo" id="isp"> Connection Type: loading...</p>
         <p class="geo" id="geoName"> ISP: loading...</p>
         <p class="geo" id="call"> Calling Code: loading...</p>
+        
+        <button class="refresh" onclick="refresh()">My Location</button>
+
    
    </div>
    
@@ -141,8 +145,8 @@
         cod2=document.getElementById("value2").innerHTML;
         //alert(cod+","+cod2);
         
-         var marker = L.marker([cod, cod2]).addTo(map);
-         marker.bindPopup("<font color=#000000><b>My Location </b> <br/> <font size=0.5px color=grey>  Accuracy 97%... ").openPopup();
+         //var marker = L.marker([cod, cod2]).addTo(map);
+         //marker.bindPopup("<font color=#000000><b>My Location </b> <br/> <font size=0.5px color=grey>  Accuracy 97%... ").openPopup();
      
          Location=document.getElementById("Location").innerHTML="Location: "+cod+","+cod2;
     }
